@@ -6,7 +6,6 @@ import co.com.ceiba.autocine.dominio.modelo.Usuario;
 import static org.junit.jupiter.api.Assertions.*;
 
 import co.com.ceiba.autocine.testdatabuilder.UsuarioTestDataBuilder;
-import org.flywaydb.test.annotation.FlywayTest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

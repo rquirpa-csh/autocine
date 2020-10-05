@@ -1,8 +1,13 @@
 package co.com.ceiba.autocine.dominio.modelo;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.HashSet;
 import java.util.Set;
 
+@Getter
+@Setter
 public class Usuario {
 
     private long id;
@@ -23,59 +28,4 @@ public class Usuario {
         this.roles = new HashSet<>(roles);
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public int getTipoDocumento() {
-        return tipoDocumento;
-    }
-
-    public void setTipoDocumento(int tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-    }
-
-    public long getIdDocumento() {
-        return idDocumento;
-    }
-
-    public void setIdDocumento(long idDocumento) {
-        this.idDocumento = idDocumento;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public Set<Rol> getRoles() {
-        return new HashSet<>(roles);
-    }
-
-    public void setRoles(Set<Rol> roles) {
-        this.roles = new HashSet<>(roles);
-    }
 }
