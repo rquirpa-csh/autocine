@@ -1,6 +1,7 @@
 package co.com.ceiba.autocine.infraestructura.persistencia.entidad;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity(name = "usuarios")
@@ -81,19 +82,19 @@ public class EntidadUsuario {
     }
 
     public Set<EntidadVehiculo> getVehiculos() {
-        return vehiculos;
+        return new HashSet<>(vehiculos);
     }
 
     public void setVehiculos(Set<EntidadVehiculo> vehiculos) {
-        this.vehiculos = vehiculos;
+        this.vehiculos = new HashSet<>(vehiculos);
     }
 
     public Set<EntidadRol> getRoles() {
-        return roles;
+        return new HashSet<>(roles);
     }
 
     public void setRoles(Set<EntidadRol> roles) {
-        this.roles = roles;
+        this.roles = new HashSet<>(roles);
     }
 
 }

@@ -1,5 +1,6 @@
 package co.com.ceiba.autocine.dominio.modelo;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class Usuario {
@@ -19,7 +20,7 @@ public class Usuario {
         this.tipoDocumento = tipoDocumento;
         this.idDocumento = idDocumento;
         this.contrasena = contrasena;
-        this.roles = roles;
+        this.roles = new HashSet<>(roles);
     }
 
     public long getId() {
@@ -71,10 +72,10 @@ public class Usuario {
     }
 
     public Set<Rol> getRoles() {
-        return roles;
+        return new HashSet<>(roles);
     }
 
     public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
+        this.roles = new HashSet<>(roles);
     }
 }

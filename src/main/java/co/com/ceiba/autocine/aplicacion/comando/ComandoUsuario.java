@@ -2,6 +2,7 @@ package co.com.ceiba.autocine.aplicacion.comando;
 
 import co.com.ceiba.autocine.dominio.modelo.Rol;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ComandoUsuario {
@@ -21,7 +22,7 @@ public class ComandoUsuario {
         this.tipoDocumento = tipoDocumento;
         this.idDocumento = idDocumento;
         this.contrasena = contrasena;
-        this.roles = roles;
+        this.roles = new HashSet<>(roles);
     }
 
     public long getId() {
@@ -73,10 +74,10 @@ public class ComandoUsuario {
     }
 
     public Set<Rol> getRoles() {
-        return roles;
+        return new HashSet<>(roles);
     }
 
     public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
+        this.roles = new HashSet<>(roles);
     }
 }
