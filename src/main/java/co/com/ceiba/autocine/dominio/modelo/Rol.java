@@ -8,10 +8,6 @@ public class Rol {
     private int id;
     private String nombre;
 
-    public Rol() {
-
-    }
-
     public int getId() {
         return id;
     }

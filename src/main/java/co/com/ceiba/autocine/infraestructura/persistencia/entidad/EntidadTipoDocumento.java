@@ -12,10 +12,6 @@ public class EntidadTipoDocumento {
     @Column(length = 30, nullable = false)
     private String nombre;
 
-    public EntidadTipoDocumento() {
-
-    }
-
     public int getId() {
         return id;
     }

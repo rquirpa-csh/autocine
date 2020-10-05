@@ -18,10 +18,8 @@ class RepositorioFuncionPersistenteTest {
     private RepositorioFuncionPersistente repositorio;
 
     @Test
-    public void crearFuncion() {
+    void crearFuncion() {
         // arrange
-
-
         Funcion funcion = new FuncionTestDataBuilder()
                 .build();
 

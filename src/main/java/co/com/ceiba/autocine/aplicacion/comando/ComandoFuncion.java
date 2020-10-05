@@ -1,7 +1,5 @@
 package co.com.ceiba.autocine.aplicacion.comando;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-
 import java.time.LocalDateTime;
 
 public class ComandoFuncion {

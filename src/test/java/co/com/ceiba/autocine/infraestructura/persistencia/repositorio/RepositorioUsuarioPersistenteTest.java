@@ -22,7 +22,7 @@ class RepositorioUsuarioPersistenteTest {
     private RepositorioUsuarioPersistente repositorio;
 
     @Test
-    public void crearUsuarioTest() {
+    void crearUsuarioTest() {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder()
                 .build();
@@ -36,7 +36,7 @@ class RepositorioUsuarioPersistenteTest {
     }
 
     @Test
-    public void actualizarUsuarioTest() {
+    void actualizarUsuarioTest() {
         // arrange
         Set<Rol> roles = new HashSet<>();
         Rol rolUsuario = new Rol();
@@ -57,8 +57,8 @@ class RepositorioUsuarioPersistenteTest {
         Usuario usuarioActualizado = repositorio.guardar(usuario);
 
         // assert
-        assertEquals(usuarioActualizado.getId(), 2);
-        assertEquals(usuarioActualizado.getNombre(), "Maria Antonieta");
+        assertEquals(2, usuarioActualizado.getId());
+        assertEquals("Maria Antonieta", usuarioActualizado.getNombre());
     }
 
 }

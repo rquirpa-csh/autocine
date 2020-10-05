@@ -1,9 +1,6 @@
 package co.com.ceiba.autocine.infraestructura.persistencia.entidad;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-
 import javax.persistence.*;
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Set;
 
