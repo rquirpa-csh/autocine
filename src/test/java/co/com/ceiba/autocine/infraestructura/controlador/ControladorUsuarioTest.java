@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @AutoConfigureMockMvc
@@ -42,6 +43,30 @@ class ControladorUsuarioTest {
         resultActions
                 .andDo(print())
                 .andExpect(status().isOk());
+    }
+
+    @Test
+    void buscarPorDocumento() throws Exception {
+        // arrange
+        Usuario maria = new UsuarioTestDataBuilder()
+                .conTipoDocumento(2)
+                .conIdDocumento(2345)
+                .conNombre("Maria")
+                .conApellido("Dolores")
+                .build();
+
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders
+                .get("/api/usuario/{tipoDocumento}/{idDocumento}",
+                        maria.getTipoDocumento(), maria.getIdDocumento())
+                .accept(MediaType.APPLICATION_JSON));
+
+        // assert
+        resultActions
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id").value(2))
+                .andExpect(jsonPath("$.nombre").value(maria.getNombre()))
+                .andExpect(jsonPath("$.apellido").value(maria.getApellido()));
     }
 
 }

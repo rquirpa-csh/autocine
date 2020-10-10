@@ -25,3 +25,7 @@ INSERT INTO usuarios_roles (rol_id, usuario_id) values (2, 2);
 INSERT INTO usuarios_roles (rol_id, usuario_id) values (2, 3);
 
 --
+
+INSERT INTO vehiculos (id, placa, id_usuario) values (1, 'ABC-123', 2);
+INSERT INTO vehiculos (id, placa, id_usuario) values (2, 'BCD-123', 2);
+INSERT INTO vehiculos (id, placa, id_usuario) values (3, 'CDE-123', 3);

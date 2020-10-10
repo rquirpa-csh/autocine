@@ -9,15 +9,19 @@ public final class MapeadorUsuario {
     private MapeadorUsuario() {}
 
     public static Usuario toDomain(EntidadUsuario entity) {
-        return new Usuario(
-                entity.getId(),
-                entity.getNombre(),
-                entity.getApellido(),
-                entity.getTipoDocumento().getId(),
-                entity.getNumeroDocumento(),
-                entity.getContrasena(),
-                MapeadorRol.toDomainSet(entity.getRoles())
-        );
+        Usuario usuario = null;
+        if (entity != null) {
+            usuario = new Usuario(
+                    entity.getId(),
+                    entity.getNombre(),
+                    entity.getApellido(),
+                    entity.getTipoDocumento().getId(),
+                    entity.getNumeroDocumento(),
+                    entity.getContrasena(),
+                    MapeadorRol.toDomainSet(entity.getRoles())
+            );
+        }
+        return usuario;
     }
 
     public static EntidadUsuario toEntity(Usuario user) {

@@ -3,6 +3,7 @@ package co.com.ceiba.autocine.testdatabuilder;
 import co.com.ceiba.autocine.aplicacion.comando.ComandoUsuario;
 import co.com.ceiba.autocine.dominio.modelo.Rol;
 import co.com.ceiba.autocine.dominio.modelo.Usuario;
+import co.com.ceiba.autocine.dominio.modelo.Vehiculo;
 
 import java.util.HashSet;
 import java.util.Set;

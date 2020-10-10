@@ -31,9 +31,6 @@ public class EntidadUsuario {
     @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id")
     private EntidadTipoDocumento tipoDocumento;
 
-    @OneToMany(mappedBy = "usuario")
-    private Set<EntidadVehiculo> vehiculos;
-
     @ManyToMany(mappedBy = "usuarios")
     private Set<EntidadRol> roles;
 

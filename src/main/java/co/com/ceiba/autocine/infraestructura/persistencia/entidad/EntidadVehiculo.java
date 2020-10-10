@@ -1,8 +1,12 @@
 package co.com.ceiba.autocine.infraestructura.persistencia.entidad;
 
-import javax.persistence.*;
-import java.util.Set;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+
+@Getter
+@Setter
 @Entity(name = "vehiculos")
 public class EntidadVehiculo {
 
@@ -10,14 +14,11 @@ public class EntidadVehiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(length = 6, nullable = false, unique = true)
+    @Column(length = 7, nullable = false, unique = true)
     private String placa;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_usuario")
+    @ManyToOne
+    @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private EntidadUsuario usuario;
-
-    @OneToMany(mappedBy = "vehiculo")
-    private Set<EntidadFactura> facturas;
 
 }

@@ -22,4 +22,10 @@ public class RepositorioUsuarioPersistente implements RepositorioUsuario {
         return MapeadorUsuario.toDomain(entidad);
     }
 
+    @Override
+    public Usuario obtenerPorDocumento(int tipoDocumento, long idDocumento) {
+        EntidadUsuario entidad = repositorio.obtenerPorDocumento(tipoDocumento, idDocumento);
+        return MapeadorUsuario.toDomain(entidad);
+    }
+
 }
