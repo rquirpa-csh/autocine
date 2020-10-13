@@ -22,6 +22,8 @@ public class SecurityUser {
         this.correo = correo;
         this.nombre = nombre;
         this.apellido = apellido;
-        this.roles = roles;
+        setRoles(roles);
     }
+
+
 }

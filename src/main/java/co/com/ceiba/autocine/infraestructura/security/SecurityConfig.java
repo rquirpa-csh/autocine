@@ -32,43 +32,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
     }
 
-    /*@Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http
-                .headers().frameOptions().disable()
-                .and()
-                .csrf().disable()
-                .authorizeRequests()
-                .antMatchers("/api/funcion/comprar").hasRole("USER")
-                .antMatchers("/api/usuario/acceso").permitAll()
-                .antMatchers("/console/**").permitAll();
-                //.and()
-                //.formLogin()
-                //.loginPage("/inicio")
-                //.defaultSuccessUrl("/funciones", true);
-
-                // to test
-                //.antMatchers("/admin/**").hasRole("ADMIN")
-                //.antMatchers("/anonymous*").anonymous()
-                //.antMatchers("/login*").permitAll()
-                //.anyRequest().authenticated()
-
-                //.loginProcessingUrl("/api/usuario/acceso")
-
-                //.failureUrl("/login.html?error=true")
-                //.failureHandler(authenticationFailureHandler())
-                //.and()
-                //.logout()
-                //.logoutUrl("/perform_logout")
-                //.deleteCookies("JSESSIONID");
-                //.logoutSuccessHandler(logoutSuccessHandler());
-    }*/
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .headers().frameOptions().disable().and()
-                .cors().and().csrf().disable()
+                .cors().disable()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 

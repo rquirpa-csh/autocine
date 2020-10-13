@@ -1,6 +1,8 @@
 package co.com.ceiba.autocine.infraestructura.error;
 
 import co.com.ceiba.autocine.dominio.exception.ApplicationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -13,6 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 @ControllerAdvice
 public class ManejadorError extends ResponseEntityExceptionHandler {
 
+    private static final Logger log = LoggerFactory.getLogger(ManejadorError.class);
+
     private static final String OCURRIO_UN_ERROR_FAVOR_CONTACTAR_AL_ADMINISTRADOR = "Ocurrió un error favor contactar al administrador.";
 
     private static final ConcurrentHashMap<String, Integer> CODIGOS_ESTADO = new ConcurrentHashMap<>();
@@ -24,13 +28,13 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Error> handleAllExceptions(Exception exception) {
+        log.error("Error: ", exception);
+
         ResponseEntity<Error> resultado;
 
         String excepcionNombre = exception.getClass().getSimpleName();
         String mensaje = exception.getMessage();
         Integer codigo = CODIGOS_ESTADO.get(excepcionNombre);
-
-        exception.printStackTrace();
 
         if (codigo != null) {
             Error error = new Error(excepcionNombre, mensaje);
