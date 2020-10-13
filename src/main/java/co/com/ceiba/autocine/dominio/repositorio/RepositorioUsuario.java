@@ -6,6 +6,6 @@ public interface RepositorioUsuario {
 
     Usuario guardar(Usuario usuario);
 
-    Usuario obtenerPorDocumento(int tipoDocumento, long idDocumento);
+    Usuario obtenerPorCorreo(String correo);
 
 }

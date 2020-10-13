@@ -13,8 +13,8 @@ public class ManejadorObtenerUsuario {
         this.repositorio = repositorio;
     }
 
-    public Usuario ejecutar(int tipoDocumento, long idDocumento) {
-        return repositorio.obtenerPorDocumento(tipoDocumento, idDocumento);
+    public Usuario ejecutar(String correo) {
+        return repositorio.obtenerPorCorreo(correo);
     }
 
 }

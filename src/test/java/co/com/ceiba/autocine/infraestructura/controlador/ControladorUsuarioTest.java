@@ -1,6 +1,8 @@
 package co.com.ceiba.autocine.infraestructura.controlador;
 
+import co.com.ceiba.autocine.aplicacion.comando.ComandoAcceso;
 import co.com.ceiba.autocine.dominio.modelo.Usuario;
+import co.com.ceiba.autocine.helper.AuthenticationHelper;
 import co.com.ceiba.autocine.testdatabuilder.UsuarioTestDataBuilder;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
@@ -37,7 +39,8 @@ class ControladorUsuarioTest {
                 .post("/api/usuario")
                 .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(objectMapper.writeValueAsString(usuario)));
+                .content(objectMapper.writeValueAsString(usuario))
+        );
 
         // assert
         resultActions
@@ -46,19 +49,19 @@ class ControladorUsuarioTest {
     }
 
     @Test
-    void buscarPorDocumento() throws Exception {
+    void buscarPorCorreo() throws Exception {
         // arrange
         Usuario maria = new UsuarioTestDataBuilder()
-                .conTipoDocumento(2)
-                .conIdDocumento(2345)
+                .conCorreo("maria.dolores@gmail.com")
                 .conNombre("Maria")
                 .conApellido("Dolores")
                 .build();
 
+        // act
         ResultActions resultActions = mvc.perform(MockMvcRequestBuilders
-                .get("/api/usuario/{tipoDocumento}/{idDocumento}",
-                        maria.getTipoDocumento(), maria.getIdDocumento())
-                .accept(MediaType.APPLICATION_JSON));
+                .get("/api/usuario/{correo}", maria.getCorreo())
+                .accept(MediaType.APPLICATION_JSON)
+        );
 
         // assert
         resultActions
@@ -67,6 +70,30 @@ class ControladorUsuarioTest {
                 .andExpect(jsonPath("$.id").value(2))
                 .andExpect(jsonPath("$.nombre").value(maria.getNombre()))
                 .andExpect(jsonPath("$.apellido").value(maria.getApellido()));
+    }
+
+    @Test
+    void accesoTest() throws Exception {
+        // arrange
+        ComandoAcceso comandoAcceso = new ComandoAcceso(
+                AuthenticationHelper.CORREO_ADMINISTRADOR,
+                AuthenticationHelper.CONTRASENA_ADMINISTRADOR
+        );
+
+        // act
+        ResultActions resultActions = mvc.perform(MockMvcRequestBuilders
+                .post("/api/usuario/acceso")
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(comandoAcceso))
+        );
+
+
+        // assert
+        resultActions
+                .andDo(print())
+                .andExpect(status().isOk());
+
     }
 
 }

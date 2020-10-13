@@ -7,6 +7,10 @@ import co.com.ceiba.autocine.infraestructura.persistencia.mapeador.MapeadorFunci
 import co.com.ceiba.autocine.infraestructura.persistencia.repositorio.jpa.RepositorioFuncionJPA;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.Set;
+
 @Repository
 public class RepositorioFuncionPersistente implements RepositorioFuncion {
 
@@ -22,4 +26,24 @@ public class RepositorioFuncionPersistente implements RepositorioFuncion {
         return MapeadorFuncion.toDomain(entidad);
     }
 
+    @Override
+    public Set<Funcion> buscarPorFecha(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
+        Set<EntidadFuncion> entitySet = repositorio.buscarPorFecha(fechaInicio, fechaFin);
+        return MapeadorFuncion.toDomainSet(entitySet);
+    }
+
+    @Override
+    public Funcion obtenerPorId(long idFuncion) {
+        Funcion funcion = null;
+        Optional<EntidadFuncion> entidad = repositorio.findById(idFuncion);
+        if (entidad.isPresent()) {
+            funcion = MapeadorFuncion.toDomain(entidad.get());
+        }
+        return funcion;
+    }
+
+    @Override
+    public int actualizarDisponible(long idFuncion) {
+        return repositorio.actualizarDisponible(idFuncion);
+    }
 }

@@ -11,6 +11,7 @@ public class VehiculoTestDataBuilder {
     private long id;
     private String placa;
     private long idUsuario;
+    private boolean ecologico;
 
     public VehiculoTestDataBuilder() {
         this.placa = PLACA;
@@ -32,11 +33,17 @@ public class VehiculoTestDataBuilder {
         return this;
     }
 
+    public VehiculoTestDataBuilder conEcologico(boolean ecologico) {
+        this.ecologico = ecologico;
+        return this;
+    }
+
     public Vehiculo build() {
         return new Vehiculo(
                 this.id,
                 this.placa,
-                this.idUsuario
+                this.idUsuario,
+                this.ecologico
         );
     }
 
@@ -44,7 +51,8 @@ public class VehiculoTestDataBuilder {
         return new ComandoVehiculo(
                 this.id,
                 this.placa,
-                this.idUsuario
+                this.idUsuario,
+                this.ecologico
         );
     }
 

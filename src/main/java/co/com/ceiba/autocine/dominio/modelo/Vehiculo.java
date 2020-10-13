@@ -1,8 +1,8 @@
 package co.com.ceiba.autocine.dominio.modelo;
 
 import co.com.ceiba.autocine.dominio.exception.ApplicationException;
-import co.com.ceiba.autocine.utils.StringUtils;
 import lombok.Getter;
+import org.springframework.util.StringUtils;
 
 @Getter
 public class Vehiculo {
@@ -12,13 +12,19 @@ public class Vehiculo {
     public static final String ERROR_ID_USUARIO = "El id de usuario deber ser positivo";
 
     private long id;
-    private String placa;
     private long idUsuario;
+    private String placa;
+    private boolean ecologico;
 
-    public Vehiculo(long id, String placa, long idUsuario) {
+    public Vehiculo(long id) {
+        setId(id);
+    }
+
+    public Vehiculo(long id, String placa, long idUsuario, boolean ecologico) {
         setId(id);
         setPlaca(placa);
         setIdUsuario(idUsuario);
+        setEcologico(ecologico);
     }
 
     public void setId(long id) {
@@ -29,7 +35,7 @@ public class Vehiculo {
     }
 
     public void setPlaca(String placa) {
-        if (StringUtils.isNullOrEmpty(placa)) {
+        if (StringUtils.isEmpty(placa)) {
             throw new ApplicationException(ERROR_PLACA);
         }
         this.placa = placa;
@@ -40,6 +46,10 @@ public class Vehiculo {
             throw new ApplicationException(ERROR_ID_USUARIO);
         }
         this.idUsuario = idUsuario;
+    }
+
+    public void setEcologico(boolean ecologico) {
+        this.ecologico = ecologico;
     }
 
 }

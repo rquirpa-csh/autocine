@@ -17,6 +17,9 @@ public class EntidadVehiculo {
     @Column(length = 7, nullable = false, unique = true)
     private String placa;
 
+    @Column(nullable = false)
+    private boolean ecologico;
+
     @ManyToOne
     @JoinColumn(name = "id_usuario", referencedColumnName = "id")
     private EntidadUsuario usuario;

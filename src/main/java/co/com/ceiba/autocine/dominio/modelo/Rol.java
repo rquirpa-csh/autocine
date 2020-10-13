@@ -1,5 +1,14 @@
 package co.com.ceiba.autocine.dominio.modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Rol {
 
     public static final int ROL_ADMINISTRADOR = 1;
@@ -8,19 +17,4 @@ public class Rol {
     private int id;
     private String nombre;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
 }

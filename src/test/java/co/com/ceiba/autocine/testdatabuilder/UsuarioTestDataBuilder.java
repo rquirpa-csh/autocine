@@ -10,25 +10,22 @@ import java.util.Set;
 
 public class UsuarioTestDataBuilder {
 
-    private static final String NOMBRE = "Pedro";
+    private static final String NOMBRE = "Pedrito";
     private static final String APELLIDO = "Perez";
-    private static final int TIPO_DOCUMENTO = 1;
-    private static final long ID_DOCUMENTO = 4567;
+    private static final String CORREO = "pedrito.perez@gmail.com";
     private static final String CONTRASENA = "4567";
 
     private long id;
+    private String correo;
     private String nombre;
     private String apellido;
-    private int tipoDocumento;
-    private long idDocumento;
     private String contrasena;
     private Set<Rol> roles = new HashSet<>();
 
     public UsuarioTestDataBuilder() {
+        this.correo = CORREO;
         this.nombre = NOMBRE;
         this.apellido = APELLIDO;
-        this.tipoDocumento = TIPO_DOCUMENTO;
-        this.idDocumento = ID_DOCUMENTO;
         this.contrasena = CONTRASENA;
 
         Rol rolUsuario = new Rol();
@@ -41,6 +38,11 @@ public class UsuarioTestDataBuilder {
         return this;
     }
 
+    public UsuarioTestDataBuilder conCorreo(String correo) {
+        this.correo = correo;
+        return this;
+    }
+
     public UsuarioTestDataBuilder conNombre(String nombre) {
         this.nombre = nombre;
         return this;
@@ -48,16 +50,6 @@ public class UsuarioTestDataBuilder {
 
     public UsuarioTestDataBuilder conApellido(String apellido) {
         this.apellido = apellido;
-        return this;
-    }
-
-    public UsuarioTestDataBuilder conTipoDocumento(int tipoDocumento) {
-        this.tipoDocumento = tipoDocumento;
-        return this;
-    }
-
-    public UsuarioTestDataBuilder conIdDocumento(long idDocumento) {
-        this.idDocumento = idDocumento;
         return this;
     }
 
@@ -74,10 +66,9 @@ public class UsuarioTestDataBuilder {
     public Usuario build() {
         return new Usuario(
                 this.id,
+                this.correo,
                 this.nombre,
                 this.apellido,
-                this.tipoDocumento,
-                this.idDocumento,
                 this.contrasena,
                 this.roles
         );
@@ -86,12 +77,10 @@ public class UsuarioTestDataBuilder {
     public ComandoUsuario buildComando() {
         return new ComandoUsuario(
                 this.id,
+                this.correo,
                 this.nombre,
                 this.apellido,
-                this.tipoDocumento,
-                this.idDocumento,
-                this.contrasena,
-                this.roles
+                this.contrasena
         );
     }
 }

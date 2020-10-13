@@ -15,6 +15,9 @@ public class EntidadUsuario {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
+    @Column(length = 50, nullable = false, unique = true)
+    private String correo;
+
     @Column(length = 50, nullable = false)
     private String nombre;
 
@@ -22,16 +25,13 @@ public class EntidadUsuario {
     private String apellido;
 
     @Column(nullable = false)
-    private long numeroDocumento;
-
-    @Column(nullable = false)
     private String contrasena;
 
-    @OneToOne
-    @JoinColumn(name = "id_tipo_documento", referencedColumnName = "id")
-    private EntidadTipoDocumento tipoDocumento;
-
-    @ManyToMany(mappedBy = "usuarios")
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "usuarios_roles",
+            joinColumns = {@JoinColumn(name = "usuario_id")},
+            inverseJoinColumns = {@JoinColumn(name = "rol_id")})
     private Set<EntidadRol> roles;
 
 }

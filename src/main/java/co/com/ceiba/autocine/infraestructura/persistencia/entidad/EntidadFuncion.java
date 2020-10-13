@@ -5,7 +5,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -33,8 +32,5 @@ public class EntidadFuncion {
 
     @Column(nullable = false)
     private double costo;
-
-    @OneToMany(mappedBy = "funcion")
-    private Set<EntidadFactura> facturas;
 
 }

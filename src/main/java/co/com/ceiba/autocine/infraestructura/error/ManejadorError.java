@@ -3,6 +3,7 @@ package co.com.ceiba.autocine.infraestructura.error;
 import co.com.ceiba.autocine.dominio.exception.ApplicationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
@@ -18,7 +19,7 @@ public class ManejadorError extends ResponseEntityExceptionHandler {
 
     public ManejadorError() {
         CODIGOS_ESTADO.put(ApplicationException.class.getSimpleName(), HttpStatus.BAD_REQUEST.value());
-        //en caso de tener otra excepcion matricularla aca
+        CODIGOS_ESTADO.put(AccessDeniedException.class.getSimpleName(), HttpStatus.FORBIDDEN.value());
     }
 
     @ExceptionHandler(Exception.class)

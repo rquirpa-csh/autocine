@@ -1,8 +1,8 @@
 package co.com.ceiba.autocine.dominio.modelo;
 
 import co.com.ceiba.autocine.dominio.exception.ApplicationException;
-import co.com.ceiba.autocine.utils.StringUtils;
 import lombok.Getter;
+import org.springframework.util.StringUtils;
 
 import java.time.LocalDateTime;
 
@@ -27,6 +27,10 @@ public class Funcion {
     private int capacidadDisponible;
     private double costo;
 
+    public Funcion(long id) {
+        setId(id);
+    }
+
     public Funcion(long id, String nombre, LocalDateTime fechaInicio, LocalDateTime fechaFin, int capacidadTotal, int capacidadDisponible, double costo) {
         setId(id);
         setNombre(nombre);
@@ -45,7 +49,7 @@ public class Funcion {
     }
 
     public void setNombre(String nombre) {
-        if (StringUtils.isNullOrEmpty(nombre)) {
+        if (StringUtils.isEmpty(nombre)) {
             throw new ApplicationException(Funcion.ERROR_NOMBRE);
         }
         this.nombre = nombre;

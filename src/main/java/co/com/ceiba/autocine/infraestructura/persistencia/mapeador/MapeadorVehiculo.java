@@ -17,7 +17,8 @@ public class MapeadorVehiculo {
             vehiculo = new Vehiculo(
                     entity.getId(),
                     entity.getPlaca(),
-                    entity.getUsuario().getId()
+                    entity.getUsuario().getId(),
+                    entity.isEcologico()
             );
         }
         return vehiculo;
@@ -27,6 +28,7 @@ public class MapeadorVehiculo {
         EntidadVehiculo entity = new EntidadVehiculo();
         entity.setId(vehiculo.getId());
         entity.setPlaca(vehiculo.getPlaca());
+        entity.setEcologico(vehiculo.isEcologico());
 
         EntidadUsuario entidadUsuario = new EntidadUsuario();
         entidadUsuario.setId(vehiculo.getIdUsuario());

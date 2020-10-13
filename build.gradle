@@ -16,18 +16,23 @@ repositories {
 apply plugin: 'jacoco'
 
 dependencies {
-	compileOnly 'org.projectlombok:lombok:1.18.12'
+	implementation 'junit:junit:4.12'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
 	annotationProcessor 'org.projectlombok:lombok:1.18.12'
 	testCompileOnly 'org.projectlombok:lombok:1.18.12'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 
+	implementation('org.springframework.boot:spring-boot-starter-validation')
+	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'com.h2database:h2'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation 'org.springframework.security:spring-security-test'
 	compile group: 'org.flywaydb.flyway-test-extensions', name: 'flyway-spring-test', version: '6.4.0'
+	compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
 }
 
 test {

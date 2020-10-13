@@ -11,8 +11,8 @@ public class FabricaFuncion {
         return new Funcion(
                 funcion.getId(),
                 funcion.getNombre(),
-                funcion.getFechaInicio(),
-                funcion.getFechaFin(),
+                funcion.getFecha(),
+                funcion.getFecha().plusMinutes(funcion.getDuracion()),
                 funcion.getCapacidadTotal(),
                 funcion.getCapacidadDisponible(),
                 funcion.getCosto()

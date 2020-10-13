@@ -4,13 +4,16 @@ import co.com.ceiba.autocine.aplicacion.comando.ComandoVehiculo;
 import co.com.ceiba.autocine.aplicacion.manejadores.ManejadorCrearVehiculo;
 import co.com.ceiba.autocine.aplicacion.manejadores.ManejadorObtenerVehiculo;
 import co.com.ceiba.autocine.dominio.modelo.Vehiculo;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Set;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("/api/vehiculo")
-public class ControladorVehiculo {
+@PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+public class ControladorVehiculo extends ControladorBase {
 
     private final ManejadorCrearVehiculo manejadorCrearVehiculo;
     private final ManejadorObtenerVehiculo manejadorObtenerVehiculo;

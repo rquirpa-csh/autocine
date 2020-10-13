@@ -9,23 +9,23 @@ public class FuncionTestDataBuilder {
 
     private static final String NOMBRE = "matrix";
     private static final LocalDateTime FECHA_INICIO = LocalDateTime.parse("2020-10-05T14:00:00");
-    private static final LocalDateTime FECHA_FIN = LocalDateTime.parse("2020-10-05T16:00:00");
+    private static final int DURACION = 120;
     private static final int CAPACIDAD_TOTAL = 30;
     private static final int CAPACIDAD_DISPONIBLE = 30;
     private static final Double COSTO = 10000d;
 
     private long id;
     private String nombre;
-    private LocalDateTime fechaInicio;
-    private LocalDateTime fechaFin;
+    private LocalDateTime fecha;
+    private int duracion;
     private int capacidadTotal;
     private int capacidadDisponible;
     private double costo;
 
     public FuncionTestDataBuilder() {
         this.nombre = NOMBRE;
-        this.fechaInicio = FECHA_INICIO;
-        this.fechaFin = FECHA_FIN;
+        this.fecha = FECHA_INICIO;
+        this.duracion = DURACION;
         this.capacidadTotal = CAPACIDAD_TOTAL;
         this.capacidadDisponible = CAPACIDAD_DISPONIBLE;
         this.costo = COSTO;
@@ -41,13 +41,13 @@ public class FuncionTestDataBuilder {
         return this;
     }
 
-    public FuncionTestDataBuilder conFechaInicio(LocalDateTime fechaInicio) {
-        this.fechaInicio = fechaInicio;
+    public FuncionTestDataBuilder conFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
         return this;
     }
 
-    public FuncionTestDataBuilder conFechaFin(LocalDateTime fechaFin) {
-        this.fechaFin = fechaFin;
+    public FuncionTestDataBuilder conDuracion(int duracion) {
+        this.duracion = duracion;
         return this;
     }
 
@@ -70,8 +70,8 @@ public class FuncionTestDataBuilder {
         return new Funcion(
                 this.id,
                 this.nombre,
-                this.fechaInicio,
-                this.fechaFin,
+                this.fecha,
+                this.fecha.plusMinutes(this.duracion),
                 this.capacidadTotal,
                 this.capacidadDisponible,
                 this.costo
@@ -82,8 +82,8 @@ public class FuncionTestDataBuilder {
         return new ComandoFuncion(
                 this.id,
                 this.nombre,
-                this.fechaInicio,
-                this.fechaFin,
+                this.fecha,
+                this.duracion,
                 this.capacidadTotal,
                 this.capacidadDisponible,
                 this.costo

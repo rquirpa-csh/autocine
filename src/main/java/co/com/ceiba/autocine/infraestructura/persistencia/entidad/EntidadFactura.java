@@ -1,7 +1,13 @@
 package co.com.ceiba.autocine.infraestructura.persistencia.entidad;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+import javax.persistence.*;
+import java.time.LocalDateTime;
+
+@Getter
+@Setter
 @Entity(name = "facturas")
 public class EntidadFactura {
 
@@ -25,7 +31,7 @@ public class EntidadFactura {
     private double total;
 
     @Column(nullable = false)
-    private java.sql.Timestamp fechaCompra;
+    private LocalDateTime fechaCompra;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_funcion")

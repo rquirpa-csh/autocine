@@ -37,29 +37,16 @@ class UsuarioTest {
     }
 
     @Test
-    void tipoDocumentoInvalido() {
+    void idCorreoNull() {
         // arrange
         Usuario usuario = new UsuarioTestDataBuilder().build();
 
         // act
         ApplicationException exception = assertThrows(ApplicationException.class,
-                () -> usuario.setTipoDocumento(0));
+                () -> usuario.setCorreo(null));
 
         // assert
-        assertEquals(Usuario.ERROR_TIPO_DOCUMENTO, exception.getMessage());
-    }
-
-    @Test
-    void idDocumentoInvalido() {
-        // arrange
-        Usuario usuario = new UsuarioTestDataBuilder().build();
-
-        // act
-        ApplicationException exception = assertThrows(ApplicationException.class,
-                () -> usuario.setIdDocumento(0));
-
-        // assert
-        assertEquals(Usuario.ERROR_ID_DOCUMENTO, exception.getMessage());
+        assertEquals(Usuario.ERROR_CORREO, exception.getMessage());
     }
 
     @Test

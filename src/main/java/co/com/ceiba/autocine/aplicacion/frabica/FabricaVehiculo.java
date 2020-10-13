@@ -11,7 +11,8 @@ public class FabricaVehiculo {
         return new Vehiculo(
                 comandoVehiculo.getId(),
                 comandoVehiculo.getPlaca(),
-                comandoVehiculo.getIdUsuario()
+                comandoVehiculo.getIdUsuario(),
+                comandoVehiculo.isEcologico()
         );
     }
 

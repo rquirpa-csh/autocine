@@ -8,13 +8,15 @@ import lombok.Setter;
 public class ComandoVehiculo {
 
     private long id;
-    private String placa;
     private long idUsuario;
+    private String placa;
+    private boolean ecologico;
 
-    public ComandoVehiculo(long id, String placa, long idUsuario) {
+    public ComandoVehiculo(long id, String placa, long idUsuario, boolean ecologico) {
         this.id = id;
         this.placa = placa;
         this.idUsuario = idUsuario;
+        this.ecologico = ecologico;
     }
 
 }
